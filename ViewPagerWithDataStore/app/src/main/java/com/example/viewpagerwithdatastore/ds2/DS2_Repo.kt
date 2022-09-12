@@ -35,26 +35,9 @@ class DS2_Repo(private val context: Context) : DS2_Interface {
     override suspend fun getDataStore2(): Flow<Data_DS_Two> =
         context.datastore.data.map { ds2 ->
             Data_DS_Two(
-                finished = ds2[FINISHED]!!
+                finished = ds2[FINISHED] ?: false
             )
 
         }
 
-//    override suspend fun sav(dataDSOne: Data_DS_One) {
-//        context.datastore.edit { dataDSOnes ->
-//            dataDSOnes[NAME] = dataDSOne.name
-//
-//
-//        }
-//    }
-//
-//    override suspend fun getDataStore1(): Flow<Data_DS_One> =
-//        context.datastore.data.map { dataDSOnes ->
-//
-//            Data_DS_One(
-//                name = dataDSOnes[NAME]!!,
-//
-//            )
-//
-//        }
 }
