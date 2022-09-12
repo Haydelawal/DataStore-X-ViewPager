@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class DS2_ViewModel @Inject constructor(private  val ds2Repo: DS2_Repo): ViewModel() {
 
-    var finished: MutableLiveData<Boolean> = MutableLiveData(false)
+    var finished: MutableLiveData<Boolean> = MutableLiveData()
 
 
     var data_DS_Two: MutableLiveData<Data_DS_Two> = MutableLiveData()
