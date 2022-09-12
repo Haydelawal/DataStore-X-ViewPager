@@ -15,7 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SplashFragment : Fragment() {
-    
+
     private lateinit var _binding: FragmentSplashBinding
     private val binding get() = _binding!!
     private val myViewModel: DS2_ViewModel by viewModels()
@@ -31,24 +31,25 @@ class SplashFragment : Fragment() {
         myViewModel.retrieveData()
 
 
-            Handler().postDelayed({
+        Handler().postDelayed({
 
-                var myFinished: Boolean = true
 
-                myViewModel.showTheData().observe(viewLifecycleOwner, Observer {
-                    myFinished = it.finished
-                })
+            myViewModel.showTheData().observe(viewLifecycleOwner, Observer {
+                val myFinished = it.finished
 
                 if (myFinished == true) {
                     val action = SplashFragmentDirections.actionSplashFragmentToFirstFragment()
                     findNavController().navigate(action)
-            }
+                }
                 else {
                     val action = SplashFragmentDirections.actionSplashFragmentToViewPagerFragment()
                     findNavController().navigate(action)
 
 
-            }
+                }
+
+            })
+
 
 
         },3000)
